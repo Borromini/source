@@ -14,9 +14,9 @@ Cc: <stable@vger.kernel.org>
 
 --- a/fs/overlayfs/super.c
 +++ b/fs/overlayfs/super.c
-@@ -773,6 +773,10 @@ retry:
- 		struct kstat stat = {
- 			.mode = S_IFDIR | 0,
+@@ -777,6 +777,10 @@ retry:
+ 			.ia_valid = ATTR_MODE,
+ 			.ia_mode = stat.mode,
  		};
 +		struct iattr attr = {
 +			.ia_valid = ATTR_MODE,
@@ -25,8 +25,8 @@ Cc: <stable@vger.kernel.org>
  
  		if (work->d_inode) {
  			err = -EEXIST;
-@@ -788,6 +792,21 @@ retry:
- 		err = ovl_create_real(dir, work, &stat, NULL, NULL, true);
+@@ -807,6 +811,21 @@ retry:
+ 		inode_unlock(work->d_inode);
  		if (err)
  			goto out_dput;
 +

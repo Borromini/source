@@ -19,7 +19,7 @@ Cc: <stable@vger.kernel.org>
 
 --- a/fs/overlayfs/super.c
 +++ b/fs/overlayfs/super.c
-@@ -794,11 +794,11 @@ retry:
+@@ -813,11 +813,11 @@ retry:
  			goto out_dput;
  
  		err = vfs_removexattr(work, XATTR_NAME_POSIX_ACL_DEFAULT);
